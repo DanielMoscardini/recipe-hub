@@ -1,7 +1,17 @@
-export default function Home() {
+import { getReceitas } from "@/lib/receitas";
+
+const Home = async () => {
+  const receitas = await getReceitas();
+
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <main>
+      <ul>
+        {receitas.map((r) => (
+          <li key={r.id}>{r.nome}</li>
+        ))}
+      </ul>
+    </main>
   );
-}
+};
+
+export default Home;
