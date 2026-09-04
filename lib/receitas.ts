@@ -11,6 +11,20 @@ export const getReceitas = async (): Promise<Receita[]> => {
   return data;
 };
 
+export const getReceitaPorId = async (id: number): Promise<Receita> => {
+  const { data, error } = await supabase
+    .from("receitas")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+};
+
 export const criarReceita = async (receita: NovaReceita): Promise<Receita> => {
   const { data, error } = await supabase
     .from("receitas")
