@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { criarReceita } from "@/lib/receitas";
+import { NovaReceita } from "@/lib/types";
 
 const NovaReceitaPage = () => {
   const [nome, setNome] = useState("");
@@ -12,12 +13,16 @@ const NovaReceitaPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // sua missão a partir daqui:
-    // 1. chame criarReceita, passando um objeto com nome, modo_preparo, imagem
-    //    (lembre: os nomes dos campos precisam bater com o types.ts,
-    //     que usa "modo_preparo" com underscore, não "modoPreparo")
-    // 2. guarde o resultado (a receita criada, com o novo id)
-    // 3. use router.push() pra redirecionar pra /${id da nova receita}
+
+    const novaReceita: NovaReceita = {
+      nome,
+      modo_preparo: modoPreparo,
+      imagem: imagem,
+    };
+
+    const receitaCriada = await criarReceita(novaReceita);
+
+    router.push(`/${receitaCriada.id}`);
   };
 
   return (
