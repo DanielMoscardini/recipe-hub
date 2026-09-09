@@ -18,7 +18,9 @@ const EditarReceitaPage = async ({
 
   return (
     <div>
-      <h1>Editar Receita</h1>
+      <h1 className="text-3xl font-bold text-zinc-100 max-w-2xl mx-auto px-4 pt-8">
+        Editar Receita
+      </h1>
       <FormularioReceita receitaInicial={receita} />
     </div>
   );

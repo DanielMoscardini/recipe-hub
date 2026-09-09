@@ -15,5 +15,12 @@ export const BotaoDeletar = ({ id }: BotaoDeletarProps) => {
     router.push("/");
   };
 
-  return <button onClick={handleDeletar}>Deletar</button>;
+  return (
+    <button
+      onClick={handleDeletar}
+      className="bg-red-900 hover:bg-red-800 text-red-100 px-4 py-2 rounded-lg transition-colors"
+    >
+      Deletar
+    </button>
+  );
 };
