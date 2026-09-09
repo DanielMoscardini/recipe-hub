@@ -7,17 +7,18 @@ interface ReceitaCardProps {
 }
 
 export const ReceitaCard = ({ receita }: ReceitaCardProps) => {
+  const imagemFinal = receita.imagem || "/sem-imagem.svg";
   return (
     <div>
       <Link href={`/${receita.id}`}>
         <div>
           <h3>{receita.nome}</h3>
-          {/* <Image
+          <Image
             alt={receita.nome}
-            src={receita.imagem}
+            src={imagemFinal}
             height={200}
             width={200}
-          /> */}
+          />
         </div>
       </Link>
     </div>
